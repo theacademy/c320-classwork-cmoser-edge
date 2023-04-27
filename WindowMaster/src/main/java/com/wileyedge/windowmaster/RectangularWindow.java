@@ -1,6 +1,6 @@
 package com.wileyedge.windowmaster;
 
-public class Window {
+public class RectangularWindow {
     // access modifier
       // variable, field, attribute, property
     private float height;
@@ -10,14 +10,14 @@ public class Window {
 
     // constructor
     // Method overloading
-    public Window(float height, float width){
+    public RectangularWindow(float height, float width){
         windowCount++;
         this.height = height;
         this.width = width;
     }
 
     // Default constructor
-    public Window() {
+    public RectangularWindow() {
         windowCount++;
     }
 

@@ -10,23 +10,27 @@ public class WindowMaster {
 
     public static void main (String[] args) {
 
-        List<Window> windows = new ArrayList<>();
+        List<RectangularWindow> windows = new ArrayList<>();
 
         // Declare, initialize, and instantiate Window object
-        windows.add(new Window(3, 2.3f));
-        windows.add(new Window(20, 10));
-        windows.add(new Window());
-        windows.add(new Window());
-        windows.add(new Window());
+        windows.add(new RectangularWindow(3, 2.3f));
+        windows.add(new RectangularWindow(20, 10));
+        windows.add(new SquareWindow(4));
+        windows.add(new RectangularWindow());
+        windows.add(new RectangularWindow());
+
+        //SquareWindow window = new SquareWindow(4);
 
 
-        for (Window window: windows) {
+        for (RectangularWindow window: windows) {
+            System.out.println("Type: " + window.getClass().getName());
             System.out.println("height: " + window.getHeight());
             System.out.println("width: " + window.getWidth());
             System.out.println("cost: " + window.generateCost());
+            System.out.println();
         }
 
-        System.out.println("Count: " + Window.getWindowCount());
+        System.out.println("Count: " + RectangularWindow.getWindowCount());
 
 
 //        float height;
