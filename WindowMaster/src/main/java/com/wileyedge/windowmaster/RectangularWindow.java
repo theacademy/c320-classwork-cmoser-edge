@@ -1,6 +1,6 @@
 package com.wileyedge.windowmaster;
 
-public class RectangularWindow {
+public class RectangularWindow implements WindowInterface {
     // access modifier
       // variable, field, attribute, property
     private float height;
@@ -8,6 +8,10 @@ public class RectangularWindow {
 
     private static int windowCount = 0;
 
+    public void displayDetails(){
+
+    }
+    
     // constructor
     // Method overloading
     public RectangularWindow(float height, float width){
