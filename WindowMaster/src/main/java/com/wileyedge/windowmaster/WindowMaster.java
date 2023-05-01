@@ -1,6 +1,7 @@
 package com.wileyedge.windowmaster;
 
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -19,7 +20,22 @@ public class WindowMaster {
         windows.add(new RectangularWindow());
         windows.add(new RectangularWindow());
 
-        //SquareWindow window = new SquareWindow(4);
+        RectangularWindow rWindow = new RectangularWindow();
+
+        try {
+            rWindow.setHeight(-10);
+            rWindow.setWidth(20);
+        } catch (HeightException | WidthException e) {
+
+            System.out.println(e.getMessage());
+        }
+            /*
+        } catch (FileNotFoundException e) {
+            System.out.println("That file does not exist. Exiting");
+            return;
+        }
+
+             */
 
         //WindowInterface windowInterface = new WindowInterface();
 
