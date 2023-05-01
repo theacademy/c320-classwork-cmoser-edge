@@ -21,6 +21,10 @@ public class WindowMaster {
 
         //SquareWindow window = new SquareWindow(4);
 
+        //WindowInterface windowInterface = new WindowInterface();
+
+        Door door = new WoodDoor();
+
 
         for (WindowInterface window: windows) {
             System.out.println("Type: " + window.getClass().getName());

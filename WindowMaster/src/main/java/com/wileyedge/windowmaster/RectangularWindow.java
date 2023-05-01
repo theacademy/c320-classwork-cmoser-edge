@@ -1,6 +1,6 @@
 package com.wileyedge.windowmaster;
 
-public class RectangularWindow implements WindowInterface {
+public class RectangularWindow implements WindowInterface, ItemInterface {
     // access modifier
       // variable, field, attribute, property
     private float height;

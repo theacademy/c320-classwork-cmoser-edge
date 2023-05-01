@@ -10,4 +10,5 @@ public interface WindowInterface {
     public float generateCost();
 
     public void displayDetails();
+
 }
