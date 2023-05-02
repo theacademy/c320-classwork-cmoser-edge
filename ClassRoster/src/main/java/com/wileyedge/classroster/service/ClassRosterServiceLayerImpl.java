@@ -1,17 +1,17 @@
 package com.wileyedge.classroster.service;
 
-import com.wileyedge.classroster.dao.ClassRosterAuditDao;
-import com.wileyedge.classroster.dao.ClassRosterDao;
-import com.wileyedge.classroster.dao.ClassRosterPersistenceException;
+import com.wileyedge.classroster.dao.*;
 import com.wileyedge.classroster.dto.Student;
 
 import java.util.List;
 
 public class ClassRosterServiceLayerImpl implements ClassRosterServiceLayer{
 
-    ClassRosterDao dao;
-    private ClassRosterAuditDao auditDao;
+    // Dependency Tightly Coupled - Determined by this class
+    ClassRosterDao dao;// = new ClassRosterDaoFileImpl();
+    private ClassRosterAuditDao auditDao;// = new ClassRosterAuditDaoFileImpl();
 
+    // Dependency is loosely coupled - Determined outside of this class
     public ClassRosterServiceLayerImpl(ClassRosterDao dao, ClassRosterAuditDao auditDao) {
         this.dao = dao;
         this.auditDao = auditDao;
