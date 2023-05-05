@@ -22,6 +22,9 @@ public class WindowMaster {
 
         RectangularWindow rWindow = new RectangularWindow();
 
+        System.out.println(RectangularWindow.getAreaCost());
+
+
         try {
             rWindow.setHeight(-10);
             rWindow.setWidth(20);
