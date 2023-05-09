@@ -2,9 +2,13 @@ package com.wileyedge.classroster.service;
 
 import com.wileyedge.classroster.dao.*;
 import com.wileyedge.classroster.dto.Student;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class ClassRosterServiceLayerImpl implements ClassRosterServiceLayer{
 
     // Dependency Tightly Coupled - Determined by this class

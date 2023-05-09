@@ -6,18 +6,24 @@ import com.wileyedge.classroster.service.ClassRosterDataValidationException;
 import com.wileyedge.classroster.service.ClassRosterDuplicateIdException;
 import com.wileyedge.classroster.service.ClassRosterServiceLayer;
 import com.wileyedge.classroster.ui.ClassRosterView;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 
 import java.util.List;
 
+@Controller
 public class ClassRosterController {
 
+    @Autowired
     private ClassRosterView view;
+    @Autowired
     private ClassRosterServiceLayer service;
 
-    public ClassRosterController(ClassRosterServiceLayer service, ClassRosterView view) {
-        this.service = service;
-        this.view = view;
-    }
+
+//    public ClassRosterController(ClassRosterServiceLayer service, ClassRosterView view) {
+//        this.service = service;
+//        this.view = view;
+//    }
 
     public void run() {
         boolean keepGoing = true;

@@ -1,7 +1,10 @@
 package com.wileyedge.classroster.ui;
 
+import org.springframework.stereotype.Component;
+
 import java.util.Scanner;
 
+@Component("userIO")
 public class UserIOConsoleImpl implements UserIO{
 
     final private Scanner input = new Scanner(System.in);

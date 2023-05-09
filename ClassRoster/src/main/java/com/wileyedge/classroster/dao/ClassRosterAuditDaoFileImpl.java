@@ -1,10 +1,13 @@
 package com.wileyedge.classroster.dao;
 
+import org.springframework.stereotype.Repository;
+
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.LocalDateTime;
 
+@Repository
 public class ClassRosterAuditDaoFileImpl implements ClassRosterAuditDao{
 
     public static final String AUDIT_FILE = "audit.txt";
