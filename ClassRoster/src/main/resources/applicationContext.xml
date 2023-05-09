@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+                http://www.springframework.org/schema/beans
+                http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="myIo" class="com.wileyedge.classroster.ui.UserIOConsoleImpl"></bean>
+    <bean id="myView" class="com.wileyedge.classroster.ui.ClassRosterView">
+        <constructor-arg ref="myIo"></constructor-arg>
+    </bean>
+    <bean id="myDao" class="com.wileyedge.classroster.dao.ClassRosterDaoFileImpl" />
+    <bean id="myAuditDao" class="com.wileyedge.classroster.dao.ClassRosterAuditDaoFileImpl" />
+    <bean id="myService" class="com.wileyedge.classroster.service.ClassRosterServiceLayerImpl">
+        <constructor-arg ref="myDao"></constructor-arg>
+        <constructor-arg ref="myAuditDao"></constructor-arg>
+    </bean>
+    <bean id="myController" class="com.wileyedge.classroster.controller.ClassRosterController">
+        <constructor-arg ref="myService"/>
+        <constructor-arg ref="myView"/>
+    </bean>
+
+</beans>

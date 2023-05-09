@@ -50,11 +50,12 @@ public class RectangularWindow implements WindowInterface, ItemInterface {
         System.out.println("Hello World");
     }
 
-    public void setHeight(float height) throws HeightException, WidthException {
+    public RectangularWindow setHeight(float height) throws HeightException, WidthException {
         if (height <= 0)
             height = 0; //throw new HeightException("Height must be greater than 0");
 
         this.height = height;
+        return this;
     }
 
     public float getHeight() {
@@ -65,11 +66,13 @@ public class RectangularWindow implements WindowInterface, ItemInterface {
         return width;
     }
 
-    public void setWidth(float width) throws WidthException {
-        if (width <= 0)
-            throw new WidthException("Width must be greater than 0");
-
-        this.width = width;
+    public RectangularWindow setWidth(float width) throws WidthException {
+//        if (width <= 0)
+//            throw new WidthException("Width must be greater than 0");
+//
+//        this.width = width;
+        RectangularWindow newWindow = new RectangularWindow().setWidth(width);
+        return newWindow;
     }
 
     public static int getWindowCount() {
