@@ -1,12 +1,14 @@
 package com.wileyedge.classroster.dao;
 
 import com.wileyedge.classroster.dto.Student;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;
 
 import java.io.*;
 import java.util.*;
 
-@Repository("someCoolName")
+@Repository
+@Profile("Application")
 public class ClassRosterDaoFileImpl implements ClassRosterDao{
 
     private Map<String, Student> students = new HashMap<>();

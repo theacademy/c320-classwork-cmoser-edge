@@ -1,7 +1,6 @@
 package com.wileyedge.classroster;
 
 import com.wileyedge.classroster.controller.ClassRosterController;
-import com.wileyedge.classroster.ui.UserIOConsoleImpl;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import java.util.Map;
@@ -9,8 +8,8 @@ import java.util.Map;
 public class App {
 
     public static void main(String[] args) {
-        //ApplicationContext appContext = new ClassPathXmlApplicationContext("classpath:applicationContext.xml");
         AnnotationConfigApplicationContext appContext = new AnnotationConfigApplicationContext();
+        appContext.getEnvironment().setActiveProfiles("Application");
         appContext.scan("com.wileyedge.classroster");
         appContext.refresh();
 
