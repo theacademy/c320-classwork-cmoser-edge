@@ -1,22 +1,14 @@
 package com.wileyedge.classroster;
 
-import com.wileyedge.classroster.controller.ClassRosterController;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import java.util.Map;
-
+@SpringBootApplication
 public class App {
 
     public static void main(String[] args) {
-        AnnotationConfigApplicationContext appContext = new AnnotationConfigApplicationContext();
-        //appContext.getEnvironment().setActiveProfiles("Application");
-        appContext.scan("com.wileyedge.classroster");
-        appContext.refresh();
 
-        Map<String, Object> beans = appContext.getBeansOfType(Object.class);
+        SpringApplication.run(App.class, args);
 
-        ClassRosterController controller = appContext.getBean(ClassRosterController.class);
-
-        controller.run();
     }
 }
