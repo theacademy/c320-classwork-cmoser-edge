@@ -8,6 +8,8 @@ public class Student {
     private String studentId;
     private String cohort; // Programming language + cohort month/year
 
+    public Student() {}
+
     public Student(String studentId) {
         this.studentId = studentId;
     }
