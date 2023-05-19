@@ -9,7 +9,7 @@ import java.io.PrintWriter;
 import java.time.LocalDateTime;
 
 @Repository
-//@Profile("Application")
+@Profile("Application")
 public class ClassRosterAuditDaoFileImpl implements ClassRosterAuditDao{
 
     public static final String AUDIT_FILE = "audit.txt";
