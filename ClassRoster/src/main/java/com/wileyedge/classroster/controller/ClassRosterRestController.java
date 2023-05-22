@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/")
 public class ClassRosterRestController {
@@ -26,6 +28,11 @@ public class ClassRosterRestController {
     @GetMapping("/view")
     public Student viewStudent() throws ClassRosterPersistenceException {
         return service.getStudent("1");
+    }
+
+    @GetMapping("/students")
+    public List<Student> viewAllStudents() throws ClassRosterPersistenceException {
+        return service.getAllStudents();
     }
 
     @PostMapping("/create")

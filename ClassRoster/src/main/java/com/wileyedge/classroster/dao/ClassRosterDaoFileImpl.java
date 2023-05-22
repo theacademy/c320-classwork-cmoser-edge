@@ -7,8 +7,8 @@ import org.springframework.stereotype.Repository;
 import java.io.*;
 import java.util.*;
 
-@Repository
-@Profile("Application")
+//@Repository
+//@Profile("Application")
 public class ClassRosterDaoFileImpl implements ClassRosterDao{
 
     private Map<String, Student> students = new HashMap<>();
