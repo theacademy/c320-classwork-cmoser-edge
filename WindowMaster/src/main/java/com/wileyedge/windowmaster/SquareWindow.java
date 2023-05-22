@@ -7,15 +7,17 @@ public class SquareWindow extends RectangularWindow {
     }
 
     @Override
-    public void setHeight(float height) {
+    public RectangularWindow setHeight(float height) {
         this.setWidth(height);
         this.setHeight(height);
+    ;    return this;
     }
 
     @Override
-    public void setWidth(float width) {
+    public RectangularWindow setWidth(float width) {
         this.setWidth(width);
         this.setHeight(width);
+        return this;
     }
 
 }

@@ -1,6 +1,7 @@
 package com.wileyedge.classroster.dao;
 
 import com.wileyedge.classroster.dto.Student;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 

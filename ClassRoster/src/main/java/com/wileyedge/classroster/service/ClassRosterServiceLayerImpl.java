@@ -2,20 +2,31 @@ package com.wileyedge.classroster.service;
 
 import com.wileyedge.classroster.dao.*;
 import com.wileyedge.classroster.dto.Student;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Profile;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class ClassRosterServiceLayerImpl implements ClassRosterServiceLayer{
 
     // Dependency Tightly Coupled - Determined by this class
-    ClassRosterDao dao;// = new ClassRosterDaoFileImpl();
+    private ClassRosterDao dao;// = new ClassRosterDaoFileImpl();
+    @Autowired
     private ClassRosterAuditDao auditDao;// = new ClassRosterAuditDaoFileImpl();
 
-    // Dependency is loosely coupled - Determined outside of this class
-    public ClassRosterServiceLayerImpl(ClassRosterDao dao, ClassRosterAuditDao auditDao) {
+    @Autowired
+    public ClassRosterServiceLayerImpl(ClassRosterDao dao) {
         this.dao = dao;
-        this.auditDao = auditDao;
     }
+
+    // Dependency is loosely coupled - Determined outside of this class
+//    public ClassRosterServiceLayerImpl(ClassRosterDao dao, ClassRosterAuditDao auditDao) {
+//        this.dao = dao;
+//        this.auditDao = auditDao;
+//    }
 
     @Override
     public void createStudent(Student student) throws

@@ -1,9 +1,11 @@
 package com.wileyedge.classroster.ui;
 
 import com.wileyedge.classroster.dto.Student;
+import org.springframework.stereotype.Controller;
 
 import java.util.List;
 
+@Controller
 public class ClassRosterView {
 
     private UserIO io;
