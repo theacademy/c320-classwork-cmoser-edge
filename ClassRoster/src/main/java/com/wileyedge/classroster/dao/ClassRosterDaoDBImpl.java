@@ -26,9 +26,16 @@ public class ClassRosterDaoDBImpl implements ClassRosterDao {
 
     @Override
     public List<Student> getAllStudents() throws ClassRosterPersistenceException {
-        // TODO: select * from table
-        // TODO: Look into lambdas
-        List<Student> students = jdbcTemplate.query("select * from student", new StudentMapper());
+        List<Student> students = jdbcTemplate.query("select * from student", (resultSet, i) -> {
+            String id = resultSet.getString("studentId");
+            Student student = new Student(id);
+            student.setFirstName(resultSet.getString("firstname"));
+            student.setLastName(resultSet.getString("lastname"));
+            student.setCohort(resultSet.getString("cohort"));
+
+            return student;
+        });
+
         return students;
     }
 
@@ -42,21 +49,6 @@ public class ClassRosterDaoDBImpl implements ClassRosterDao {
     public Student removeStudent(String studentId) throws ClassRosterPersistenceException {
         // TODO: delete from table where ?
         return null;
-    }
-
-    private static final class StudentMapper implements RowMapper<Student> {
-
-        @Override
-        public Student mapRow(ResultSet resultSet, int i) throws SQLException {
-            String id = resultSet.getString("studentId");
-            Student student = new Student(id);
-            student.setFirstName(resultSet.getString("firstname"));
-            student.setLastName(resultSet.getString("lastname"));
-            student.setCohort(resultSet.getString("cohort"));
-
-            return student;
-
-        }
     }
 
 }
