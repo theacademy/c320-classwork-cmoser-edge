@@ -64,4 +64,8 @@ public class Student {
                 ", cohort='" + cohort + '\'' +
                 '}';
     }
+
+    public void setStudentId(String studentId) {
+        this.studentId = studentId;
+    }
 }

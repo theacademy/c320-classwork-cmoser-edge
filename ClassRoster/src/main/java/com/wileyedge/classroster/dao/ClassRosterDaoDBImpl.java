@@ -4,11 +4,11 @@ import com.wileyedge.classroster.dto.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.List;
 
 @Repository
@@ -19,9 +19,29 @@ public class ClassRosterDaoDBImpl implements ClassRosterDao {
     JdbcTemplate jdbcTemplate;
 
     @Override
+    @Transactional
     public Student addStudent(String studentId, Student student) throws ClassRosterPersistenceException {
-        // TODO: insert into table something
-        return null;
+
+        GeneratedKeyHolder keyHolder = new GeneratedKeyHolder();
+
+        jdbcTemplate.update((Connection conn) -> {
+           PreparedStatement statement = conn.prepareStatement(
+                   "insert into student (firstname, lastname, cohort)" +
+                   "values (?, ?, ?)",
+                   Statement.RETURN_GENERATED_KEYS);
+
+            statement.setString(1, student.getFirstName());
+            statement.setString(2, student.getLastName());
+            statement.setString(3, student.getCohort());
+
+           return statement;
+
+        }, keyHolder);
+
+        student.setStudentId(keyHolder.getKey().toString());
+
+
+        return student;
     }
 
     @Override

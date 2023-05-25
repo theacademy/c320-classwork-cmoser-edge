@@ -34,8 +34,8 @@ public class ClassRosterRestController {
     }
 
     @PostMapping("/create")
-    public void createStudent(@RequestBody Student student) throws ClassRosterDataValidationException, ClassRosterPersistenceException, ClassRosterDuplicateIdException {
-        service.createStudent(student);
+    public Student createStudent(@RequestBody Student student) throws ClassRosterDataValidationException, ClassRosterPersistenceException, ClassRosterDuplicateIdException {
+        return service.createStudent(student);
     }
 
 }
