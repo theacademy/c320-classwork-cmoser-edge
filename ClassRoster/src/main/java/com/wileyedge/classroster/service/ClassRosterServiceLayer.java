@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface ClassRosterServiceLayer {
 
-    void createStudent(Student student) throws
+    Student createStudent(Student student) throws
             ClassRosterDuplicateIdException,
             ClassRosterDataValidationException,
             ClassRosterPersistenceException;

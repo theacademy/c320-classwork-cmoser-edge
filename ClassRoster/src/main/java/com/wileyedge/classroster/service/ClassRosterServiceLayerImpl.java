@@ -3,8 +3,6 @@ package com.wileyedge.classroster.service;
 import com.wileyedge.classroster.dao.*;
 import com.wileyedge.classroster.dto.Student;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -29,7 +27,7 @@ public class ClassRosterServiceLayerImpl implements ClassRosterServiceLayer{
 //    }
 
     @Override
-    public void createStudent(Student student) throws
+    public Student createStudent(Student student) throws
             ClassRosterDuplicateIdException,
             ClassRosterDataValidationException,
             ClassRosterPersistenceException {
@@ -52,10 +50,12 @@ public class ClassRosterServiceLayerImpl implements ClassRosterServiceLayer{
 
         // We passed all our business rules checks so go ahead
         // and persist the Student object
-        dao.addStudent(student.getStudentId(), student);
+        student = dao.addStudent(student.getStudentId(), student);
 
         // The student was successfully created, now write to the audit log
         auditDao.writeAuditEntry("Student " + student.getStudentId() + " CREATED.");
+
+        return student;
 
     }
 
