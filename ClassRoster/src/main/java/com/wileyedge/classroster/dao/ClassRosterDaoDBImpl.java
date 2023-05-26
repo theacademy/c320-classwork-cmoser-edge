@@ -45,16 +45,26 @@ public class ClassRosterDaoDBImpl implements ClassRosterDao {
         return student;
     }
 
+    // Using BeanPropertyRowMapper
     @Override
     public List<Student> getAllStudents() throws ClassRosterPersistenceException {
         return jdbcTemplate.query("select *, cohort as cohortName from student",
             BeanPropertyRowMapper.newInstance(Student.class));
     }
 
+    // Using lambda since RowMapper<T> is a functional interface
     @Override
     public Student getStudent(String studentId) throws ClassRosterPersistenceException {
-        // TODO: select * from table where ?
-        return null;
+        return jdbcTemplate.queryForObject("select * from student where studentID = '" + studentId + "';",
+                (resultSet, i) -> {
+            String id = resultSet.getString("studentId");
+            Student student = new Student(id);
+            student.setFirstName(resultSet.getString("firstname"));
+            student.setLastName(resultSet.getString("lastname"));
+            student.setCohort(resultSet.getString("cohort"));
+
+            return student;
+        });
     }
 
     @Override
