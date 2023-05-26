@@ -3,6 +3,7 @@ package com.wileyedge.classroster.dao;
 import com.wileyedge.classroster.dto.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.stereotype.Repository;
@@ -44,9 +45,18 @@ public class ClassRosterDaoDBImpl implements ClassRosterDao {
         return student;
     }
 
+    // Using BeanPropertyRowMapper
     @Override
     public List<Student> getAllStudents() throws ClassRosterPersistenceException {
-        List<Student> students = jdbcTemplate.query("select * from student", (resultSet, i) -> {
+        return jdbcTemplate.query("select *, cohort as cohortName from student",
+            BeanPropertyRowMapper.newInstance(Student.class));
+    }
+
+    // Using lambda since RowMapper<T> is a functional interface
+    @Override
+    public Student getStudent(String studentId) throws ClassRosterPersistenceException {
+        return jdbcTemplate.queryForObject("select * from student where studentID = '" + studentId + "';",
+                (resultSet, i) -> {
             String id = resultSet.getString("studentId");
             Student student = new Student(id);
             student.setFirstName(resultSet.getString("firstname"));
@@ -55,14 +65,6 @@ public class ClassRosterDaoDBImpl implements ClassRosterDao {
 
             return student;
         });
-
-        return students;
-    }
-
-    @Override
-    public Student getStudent(String studentId) throws ClassRosterPersistenceException {
-        // TODO: select * from table where ?
-        return null;
     }
 
     @Override
